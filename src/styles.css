@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#card {
+  border: 2px solid black;
+  height: 50px;
+}
+
+.navbar {
+  height: 40px;
+  background-color: orange;
+}
+
+.logo {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  padding-top: 5px;
+  padding-left: 40px;
+}
+
+.main {
+  display: flex;
+}
+#side-menu {
+  border: 2px solid black;
+  flex: 1;
+  max-width: 200px;
+}
+
+#container {
+  flex: 2;
+}
+
+#list-titles {
+}
+
+#side-list-title {
+  background-color: lightgrey;
+  list-style: none;
+  margin: 5px;
+}
+
+ul {
+  margin-left: -40px;
+}
