@@ -22,6 +22,8 @@ console.log("test");
 
 /// buttons
 
+createPage("Inbox", myArray);
+
 btnInbox.addEventListener("click", function () {
   const test = createPage("Inbox", myArray);
 });
@@ -39,3 +41,26 @@ btnWeek.addEventListener("click", function () {
 // });
 
 // console.log(dates);
+
+///test
+
+let prevent = function () {
+  var form = document
+    .querySelector("form")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+    });
+};
+
+prevent();
+const formSend = document
+  .getElementById("add")
+  .addEventListener("click", function () {
+    let title = document.getElementById("add-title").value;
+    let description = document.getElementById("add-description").value;
+    let due = document.getElementById("add-duedate").value;
+    let priority = document.getElementById("add-priority").value;
+    console.log(title + description);
+    itemGen(title, description, due, priority, myArray);
+    createPage("Inbox", myArray);
+  });

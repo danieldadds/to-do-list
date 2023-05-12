@@ -1,5 +1,7 @@
 //containers
 
+import { itemGen } from "./create";
+
 const container = document.getElementById("container");
 const sideContainer = document.getElementById("list-titles");
 
@@ -14,7 +16,7 @@ const btnWeek = document.getElementById("btn-week");
 const mainHeading = document.getElementById("main-heading");
 const listContent = document.getElementById("list-content");
 
-// lines
+// form dom
 
 /// page creation
 
@@ -38,6 +40,13 @@ function createPage(page, array) {
       dates.push(array[index]);
       createList(dates);
     }
+    let btnAdd = document.createElement("button");
+    btnAdd.innerText = "Add";
+    listContent.appendChild(btnAdd);
+
+    btnAdd.addEventListener("click", function () {
+      console.log("test add worked");
+    });
   }
 
   // let dates = array.filter(function (array) {
