@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { itemGen } from "./create";
 import { modifyItem } from "./modify";
-import { createCard, btnInbox, btnToday, btnWeek, createPage } from "./dom";
+import { btnInbox, btnToday, btnWeek, createPage } from "./dom";
 import "./styles.css";
 
 let myArray = [];
@@ -20,12 +20,14 @@ itemGen("Go gym", "get in shape", "11MAY", "High", myArray);
 
 console.log("test");
 
-/// buttons
+// create home page
 
 createPage("Inbox", myArray);
 
+/// buttons and event listeners
+
 btnInbox.addEventListener("click", function () {
-  const test = createPage("Inbox", myArray);
+  createPage("Inbox", myArray);
 });
 
 btnToday.addEventListener("click", function () {
@@ -35,14 +37,6 @@ btnToday.addEventListener("click", function () {
 btnWeek.addEventListener("click", function () {
   createPage("Week", myArray);
 });
-
-// let dates = myArray.filter(function (myArray) {
-//   return myArray.dueDate === "11MAY";
-// });
-
-// console.log(dates);
-
-///test
 
 let prevent = function () {
   var form = document
