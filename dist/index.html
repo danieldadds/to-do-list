@@ -5,15 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To do list</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="navbar"><h1 class="logo">The To Do List</h1></div>
 
     <div class="main">
       <div id="side-menu">
-        <div id="list-titles"></div>
+        <div id="">
+          <ul>
+            <li class="side-item" id="btn-inbox">Inbox</li>
+            <li class="side-item" id="btn-today">Today</li>
+            <li class="side-item" id="btn-week">This Week</li>
+          </ul>
+
+          <h1 id="list-titles">Projects</h1>
+        </div>
       </div>
-      <div id="container"></div>
+      <div id="container">
+        <h1 id="main-heading">NULL</h1>
+
+        <ul id="list-content"></ul>
+      </div>
     </div>
 
     <script src="main.js"></script>

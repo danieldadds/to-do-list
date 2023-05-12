@@ -1,21 +1,41 @@
+import _ from "lodash";
 import { itemGen } from "./create";
 import { modifyItem } from "./modify";
-import { container, createCard } from "./dom";
+import { createCard, btnInbox, btnToday, btnWeek, createPage } from "./dom";
 import "./styles.css";
 
 let myArray = [];
 
-itemGen("Brush Teeth", "Brush twice daily", "Due 20th may", "High", myArray);
+/// few test objects whilst i test the functionality
 
-itemGen("Code", "practice for 2 hours", "19th may", "Completed", myArray);
-itemGen("Drink green tea", "be healthy", "17th may", "Low", myArray);
-itemGen("Go gym", "get in shape", "14th may", "High", myArray);
+itemGen("Brush Teeth", "Brush twice daily", "20MAY", "High", myArray);
+itemGen("Code", "practice for 2 hours", "19MAY", "Completed", myArray);
+itemGen("Drink green tea", "be healthy", "17MAY", "Low", myArray);
+itemGen("Go gym", "get in shape", "11MAY", "High", myArray);
+itemGen("Go gym", "get in shape", "11MAY", "High", myArray);
 
-console.log(myArray);
+// generate cards from dom
 
-modifyItem.remove(myArray, 1);
+// createCard(myArray);
 
-console.log(myArray);
+console.log("test");
 
-// generate card from dom
-createCard(myArray);
+/// buttons
+
+btnInbox.addEventListener("click", function () {
+  const test = createPage("Inbox", myArray);
+});
+
+btnToday.addEventListener("click", function () {
+  createPage("Today", myArray);
+});
+
+btnWeek.addEventListener("click", function () {
+  createPage("Week", myArray);
+});
+
+// let dates = myArray.filter(function (myArray) {
+//   return myArray.dueDate === "11MAY";
+// });
+
+// console.log(dates);
