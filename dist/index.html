@@ -25,6 +25,16 @@
           </ul>
 
           <h1 id="list-titles">Projects</h1>
+
+          <ul id="project-list"></ul>
+          <form>
+            <input type="text" id="project-title" />
+            <input
+              type="submit"
+              id="add-project"
+              class="add-project add-main"
+            />
+          </form>
         </div>
       </div>
       <div id="container">
@@ -36,7 +46,7 @@
           <form class="add-form">
             <input type="text" id="add-title" placeholder="Title" />
             <input type="text" id="add-description" placeholder="Description" />
-            <input type="text" id="add-duedate" placeholder="Due Date" />
+            <input type="date" id="add-duedate" placeholder="Due Date" />
             <input type="text" id="add-priority" placeholder="Priority" />
             <input type="submit" id="add" value="Add To list" />
           </form>

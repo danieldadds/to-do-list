@@ -1,6 +1,7 @@
 //containers
 
-import { itemGen } from "./create";
+import { itemGen, createItem } from "./create";
+import { compareAsc, format } from "date-fns";
 
 const container = document.getElementById("container");
 const sideContainer = document.getElementById("list-titles");
@@ -11,17 +12,24 @@ const btnInbox = document.getElementById("btn-inbox");
 const btnToday = document.getElementById("btn-today");
 const btnWeek = document.getElementById("btn-week");
 const btnAdd = document.createElement("button");
+const btnAddProject = document.getElementById("add-project");
 
 // event listeners
 
 btnAdd.addEventListener("click", toggleAdd);
+
+//side menu
+
+const projectList = document.getElementById("project-list");
 
 //main page dom
 
 const mainHeading = document.getElementById("main-heading");
 const listContent = document.getElementById("list-content");
 
-// form dom
+// dates
+
+const today = format(new Date(), "dd.MM.yyyy");
 
 /// page creation
 
@@ -31,17 +39,17 @@ function createPage(page, array) {
     listContent.removeChild(listContent.firstChild);
   }
   mainHeading.innerText = page;
-  console.log(array[0].dueDate);
+  // console.log(array[0].dueDate);
 
   if (page === "Today") {
     let dates = array.filter(function (array) {
-      return array.dueDate === "11MAY";
+      // filters and then returns any items from today
+      return array.dueDate === today;
     });
     createList(dates);
   } else if (page === "Inbox") {
     for (let index = 0; index < array.length; index++) {
       let dates = [];
-
       dates.push(array[index]);
       createList(dates);
     }
@@ -51,10 +59,6 @@ function createPage(page, array) {
     btnAdd.classList.add("add-main");
     btnAdd.addEventListener("click", toggleAdd);
   }
-
-  // let dates = array.filter(function (array) {
-  //   return array.dueDate === "11MAY";
-  // });
 }
 
 //// list creation
@@ -84,4 +88,12 @@ function toggleAdd() {
   }
 }
 
-export { container, btnInbox, btnToday, btnWeek, createPage };
+export {
+  container,
+  btnInbox,
+  btnToday,
+  btnWeek,
+  btnAddProject,
+  projectList,
+  createPage,
+};
