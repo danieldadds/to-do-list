@@ -8,20 +8,21 @@ import {
   createPage,
   btnAddProject,
   projectList,
+  today,
 } from "./dom";
 import "./styles.css";
-import { compareAsc, format } from "date-fns";
+import { compareAsc, addDays, format, parseISO, toDate } from "date-fns";
 
 let mainArray = [];
 let projectArray = [];
 
 /// few test objects whilst i test the functionality
 
-itemGen("Brush Teeth", "Brush twice daily", "20MAY", "High", mainArray);
-itemGen("Code", "practice for 2 hours", "19MAY", "Completed", mainArray);
-itemGen("Drink green tea", "be healthy", "17MAY", "Low", mainArray);
-itemGen("Go gym", "get in shape", "15.05.2023", "High", mainArray);
-itemGen("Go gym", "get in shape", "15.05.2023", "High", mainArray);
+itemGen("Brush Teeth", "Brush twice daily", "16.05.2023", "High", mainArray);
+itemGen("Code", "practice for 2 hours", "18.05.2023", "Completed", mainArray);
+itemGen("Drink green tea", "be healthy", "16.05.2023", "Low", mainArray);
+itemGen("Go gym", "get in shape", "16.05.2023", "High", mainArray);
+itemGen("Go gym", "get in shape", "18.05.2023", "High", mainArray);
 
 // create home page
 
@@ -58,7 +59,7 @@ document.getElementById("add").addEventListener("click", function () {
   let due = document.getElementById("add-duedate").value;
 
   // convert date into uk format
-  due = format(new Date(), "dd.MM.yyyy");
+  due = format(parseISO(due), "dd.MM.yyyy");
 
   // let due = document.getElementById("add-duedate").value;
   let priority = document.getElementById("add-priority").value;
@@ -82,3 +83,29 @@ document.getElementById("add-project").addEventListener("click", function () {
 
   console.log(projectArray);
 });
+
+// let testdate = today + 1;
+// console.log(testdate);
+
+// const today = format(new Date(), "dd.MM.yyyy");
+
+// var date = format(new Date(), "dd.MM.yyyy");
+
+/// get todays
+// let dateOne = new Date();
+
+// console.log(date);
+
+// let newDate = addDays(date, 7);
+
+// newDate = format(newDate, "dd.MM.yyyy");
+// console.log(newDate);
+// Add ten days to specified date
+
+// var newDate = toDate(parseISO(date));
+
+// newDate = addDays(parseISO(date), 2);
+
+// addDays(parseISO(date), 2);
+
+// addDays(parseISO("2016-01-01"), 1);

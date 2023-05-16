@@ -1,7 +1,7 @@
 //containers
 
 import { itemGen, createItem } from "./create";
-import { compareAsc, format } from "date-fns";
+import { compareAsc, format, addDays } from "date-fns";
 
 const container = document.getElementById("container");
 const sideContainer = document.getElementById("list-titles");
@@ -31,6 +31,14 @@ const listContent = document.getElementById("list-content");
 
 const today = format(new Date(), "dd.MM.yyyy");
 
+let dateOne = new Date();
+
+// add 7 dates
+let dateSeven = addDays(dateOne, 7);
+
+// format date seven to dd mm yyyy
+dateSeven = format(dateSeven, "dd.MM.yyyy");
+
 /// page creation
 
 function createPage(page, array) {
@@ -58,6 +66,15 @@ function createPage(page, array) {
     listContent.appendChild(btnAdd);
     btnAdd.classList.add("add-main");
     btnAdd.addEventListener("click", toggleAdd);
+  } else if (page === "Week") {
+    console.log("test");
+
+    let dates = array.filter(function (array) {
+      // filters and then returns any items from today
+      if (array.dueDate >= today && array.dueDate <= dateSeven) {
+        return array.dueDate <= dateSeven;
+      }
+    });
   }
 }
 
@@ -96,4 +113,5 @@ export {
   btnAddProject,
   projectList,
   createPage,
+  today,
 };
