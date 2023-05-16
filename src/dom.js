@@ -1,5 +1,6 @@
 //containers
 
+import { update } from "lodash";
 import { itemGen, createItem } from "./create";
 import { compareAsc, format, addDays } from "date-fns";
 
@@ -26,6 +27,16 @@ const projectList = document.getElementById("project-list");
 
 const mainHeading = document.getElementById("main-heading");
 const listContent = document.getElementById("list-content");
+
+// counters
+
+const inboxCountDom = document.getElementById("inbox-count");
+const todayCountDom = document.getElementById("today-count");
+const weekCountDom = document.getElementById("week-count");
+
+let inboxCount = 0;
+let todayCount = 0;
+let weekCount = 0;
 
 // dates
 
@@ -54,12 +65,14 @@ function createPage(page, array) {
       // filters and then returns any items from today
       return array.dueDate === today;
     });
-    createList(dates);
+    createList(dates, todayCount);
+    // updateCount(todayCountDom, todayCount);
   } else if (page === "Inbox") {
     for (let index = 0; index < array.length; index++) {
       let dates = [];
       dates.push(array[index]);
-      createList(dates);
+      createList(dates, inboxCount);
+      // updateCount(inboxCountDom, inboxCount);
     }
     let btnAdd = document.createElement("button");
     btnAdd.innerText = "Add";
@@ -71,20 +84,22 @@ function createPage(page, array) {
 
     let dates = array.filter(function (array) {
       // filters and then returns any items from today
-      if (array.dueDate >= today && array.dueDate <= dateSeven) {
-        return array.dueDate <= dateSeven;
-      }
+      return array.dueDate >= today && array.dueDate <= dateSeven;
     });
+    createList(dates, weekCount);
+    // updateCount(weekCountDom, weekCount);
   }
 }
 
 //// list creation
 
-function createList(array) {
+function createList(array, counter) {
   for (let index = 0; index < array.length; index++) {
-    console.log(array[index]);
+    // counter = counter++;
     let newLine = document.createElement("li");
     newLine.classList.add("main-list");
+    newLine.setAttribute("id", index + "-list");
+
     let lineContent = document.createTextNode(
       array[index].title + " " + array[index].dueDate
     );
@@ -105,6 +120,14 @@ function toggleAdd() {
   }
 }
 
+const updateCount = (dom, count) => {
+  dom.innerText = count;
+};
+
+// const expandList = (array, index) => {
+//   console.log(array[index]);
+// };
+
 export {
   container,
   btnInbox,
@@ -113,5 +136,5 @@ export {
   btnAddProject,
   projectList,
   createPage,
-  today,
+  toggleAdd,
 };

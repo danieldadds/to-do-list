@@ -8,7 +8,7 @@ import {
   createPage,
   btnAddProject,
   projectList,
-  today,
+  toggleAdd,
 } from "./dom";
 import "./styles.css";
 import { compareAsc, addDays, format, parseISO, toDate } from "date-fns";
@@ -22,10 +22,11 @@ itemGen("Brush Teeth", "Brush twice daily", "16.05.2023", "High", mainArray);
 itemGen("Code", "practice for 2 hours", "18.05.2023", "Completed", mainArray);
 itemGen("Drink green tea", "be healthy", "16.05.2023", "Low", mainArray);
 itemGen("Go gym", "get in shape", "16.05.2023", "High", mainArray);
-itemGen("Go gym", "get in shape", "18.05.2023", "High", mainArray);
+itemGen("Go gym", "get in shape", "15.05.2023", "High", mainArray);
 
 // create home page
 
+toggleAdd();
 createPage("Inbox", mainArray);
 
 /// buttons and event listeners
